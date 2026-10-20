@@ -12,7 +12,6 @@ venv/
 
 # Django / Wagtail
 /media/
-/static/
 /staticfiles/
 *.sqlite3
 *.log

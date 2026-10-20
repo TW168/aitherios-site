@@ -1,0 +1,32 @@
+{% load static wagtailcore_tags i18n site_tags %}
+{% localized_home as home %}
+{% navbar_pages as menu_pages %}
+{% language_links as languages %}
+<header class="navbar">
+  <div class="navbar__inner container">
+    <a class="navbar__brand" href="{% if home %}{% pageurl home %}{% else %}/{% endif %}">
+      <img src="{% static 'img/logo.svg' %}" alt="" width="40" height="40">
+      <span>AITHERIOS</span>
+    </a>
+
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-menu">
+      <span class="visually-hidden">{% trans "Menu" %}</span>
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <nav id="navbar-menu" class="navbar__menu" aria-label="{% trans 'Main' %}">
+      <ul class="navbar__links">
+        {% for item in menu_pages %}
+          <li><a href="{% pageurl item %}"{% if page and item.pk == page.pk %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+        <li><a href="#footer">{% trans "Contact" %}</a></li>
+      </ul>
+
+      <ul class="lang-switch" aria-label="{% trans 'Language' %}">
+        {% for lang in languages %}
+          <li><a href="{{ lang.url }}" lang="{{ lang.code }}" hreflang="{{ lang.code }}" title="{{ lang.name }}"{% if lang.active %} aria-current="true" class="is-active"{% endif %}>{{ lang.short }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
