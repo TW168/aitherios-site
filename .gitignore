@@ -1,0 +1,36 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Django / Wagtail
+/media/
+/static/
+/staticfiles/
+*.sqlite3
+*.log
+
+# Docker data
+/data/
+docker-compose.override.yml
+
+# Translations (compiled; .po source files are kept)
+*.mo
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Tests
+.coverage
+htmlcov/
+.pytest_cache/
