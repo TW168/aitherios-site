@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-20 11:45-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: home/templates/home/includes/project_card.html:13
+msgid "View project"
+msgstr "查看專案"
+
+#: templates/404.html:4 templates/404.html:9
+msgid "Page not found"
+msgstr "找不到頁面"
+
+#: templates/404.html:10
+msgid "The page you were looking for does not exist."
+msgstr "您要找的頁面不存在。"
+
+#: templates/includes/footer.html:6
+msgid "All rights reserved."
+msgstr "版權所有。"
+
+#: templates/includes/navbar.html:13
+msgid "Menu"
+msgstr "選單"
+
+#: templates/includes/navbar.html:17
+msgid "Main"
+msgstr "主選單"
+
+#: templates/includes/navbar.html:22
+msgid "Contact"
+msgstr "聯絡"
+
+#: templates/includes/navbar.html:25
+msgid "Language"
+msgstr "語言"

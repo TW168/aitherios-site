@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    # utf8mb4 so Traditional Chinese (and emoji) are stored correctly.
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - internal
+
+  web:
+    build: .
+    image: aitherios-site:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DJANGO_MEDIA_ROOT: /app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - media:/app/media
+    ports:
+      # Reachable from the VPS itself only; Caddy does the public HTTPS side.
+      - "127.0.0.1:${WEB_PORT:-8000}:8000"
+    networks:
+      internal:
+      proxy:
+        aliases:
+          - aitherios-web
+
+volumes:
+  db_data:
+  media:
+
+networks:
+  internal:
+  # Shared with the Caddy container (and later FastAPI). Create it once with:
+  #   docker network create proxy
+  proxy:
+    external: true
+    name: ${PROXY_NETWORK:-proxy}

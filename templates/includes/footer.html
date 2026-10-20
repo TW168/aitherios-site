@@ -1,0 +1,19 @@
+{% load i18n site_tags %}
+{% language_links as languages %}
+{% now "Y" as year %}
+<footer id="footer" class="footer">
+  <div class="footer__inner container">
+    <p>&copy; {{ year }} aitherios.cloud · {% trans "All rights reserved." %}</p>
+    <ul class="footer__links">
+      {% if settings.home.FooterSettings.github_url %}
+        <li><a href="{{ settings.home.FooterSettings.github_url }}" rel="noopener">GitHub</a></li>
+      {% endif %}
+      {% if settings.home.FooterSettings.email %}
+        <li><a href="mailto:{{ settings.home.FooterSettings.email }}">{{ settings.home.FooterSettings.email }}</a></li>
+      {% endif %}
+      {% for lang in languages %}
+        <li><a href="{{ lang.url }}" lang="{{ lang.code }}" hreflang="{{ lang.code }}"{% if lang.active %} aria-current="true"{% endif %}>{{ lang.short }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>

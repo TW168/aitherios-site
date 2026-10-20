@@ -1,0 +1,6 @@
+Django>=6.1,<6.2
+wagtail>=7.4,<7.5
+wagtail-localize>=1.14,<1.15
+whitenoise>=6.12,<7
+gunicorn>=26,<27
+mysqlclient>=2.2,<3
